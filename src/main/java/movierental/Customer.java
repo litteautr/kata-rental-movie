@@ -23,7 +23,8 @@ public class Customer {
   public String statement() {
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    String result = "Rental Record for " + getName() + "\n";
+    StringBuilder result = new StringBuilder();
+    printHeader(result);
 
     for (Rental rental : rentals) {
       double amount = 0;
@@ -54,15 +55,35 @@ public class Customer {
         frequentRenterPoints++;
       }
 
-      // show figures for this rental
-      result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(amount) + "\n";
       totalAmount += amount;
+
+      printRental(result, rental, amount);
     }
 
-    // add footer lines
-    result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-    result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+    printFooter(result, totalAmount, frequentRenterPoints);
 
-    return result;
+    return result.toString();
+  }
+
+  private void printHeader(StringBuilder result) {
+    result.append("Rental Record for ")
+        .append(getName())
+        .append("\n");
+  }
+
+  private static void printRental(StringBuilder result, Rental rental, double amount) {
+    result.append("\t")
+        .append(rental.getMovie().getTitle())
+        .append("\t")
+        .append(amount).append("\n");
+  }
+
+  private static void printFooter(StringBuilder result, double totalAmount, int frequentRenterPoints) {
+    result.append("Amount owed is ")
+        .append(totalAmount)
+        .append("\n")
+        .append("You earned ")
+        .append(frequentRenterPoints)
+        .append(" frequent renter points");
   }
 }
