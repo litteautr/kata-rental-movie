@@ -20,9 +20,9 @@ class CustomerTest {
 
   @Test
   void addRental() {
-    Customer customer2 = new CustomerBuilder().withName("Julia").build();
-    Rental rental1 = new Rental(REGULAR_MOVIE, 3);
-    customer2.addRental(rental1);
+    Customer customer = new CustomerBuilder().withName("Julia").build();
+    Rental rental = new Rental(REGULAR_MOVIE, 3);
+    customer.addRental(rental);
   }
 
   @Test
@@ -33,52 +33,52 @@ class CustomerTest {
 
   @Test
   void statement_regularMovie() {
-    Rental rental1 = new Rental(REGULAR_MOVIE, 3);
-    Customer customer2 =
+    Rental rental = new Rental(REGULAR_MOVIE, 3);
+    Customer customer =
         new CustomerBuilder()
             .withName("Sallie")
-            .withRentals(rental1)
+            .withRentals(rental)
             .build();
     String expected = """
         Rental Record for Sallie
         \tGone with the Wind\t3.5
         Amount owed is 3.5
         You earned 1 frequent renter points""";
-    String statement = customer2.statement(new TextePrinter());
+    String statement = customer.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
 
   @Test
   void statement_newReleaseMovie() {
-    Rental rental1 = new Rental(NEW_RELEASE_MOVIE, 3);
-    Customer customer2 =
+    Rental rental = new Rental(NEW_RELEASE_MOVIE, 3);
+    Customer customer =
         new CustomerBuilder()
             .withName("Sallie")
-            .withRentals(rental1)
+            .withRentals(rental)
             .build();
     String expected = """
         Rental Record for Sallie
         \tStar Wars\t9.0
         Amount owed is 9.0
         You earned 2 frequent renter points""";
-    String statement = customer2.statement(new TextePrinter());
+    String statement = customer.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
 
   @Test
   void statement_childrensMovie() {
-    Rental rental1 = new Rental(CHILDRENS_MOVIE, 3);
-    Customer customer2
+    Rental rental = new Rental(CHILDRENS_MOVIE, 3);
+    Customer customer
         = new CustomerBuilder()
         .withName("Sallie")
-        .withRentals(rental1)
+        .withRentals(rental)
         .build();
     String expected = """
         Rental Record for Sallie
         \tMadagascar\t1.5
         Amount owed is 1.5
         You earned 1 frequent renter points""";
-    String statement = customer2.statement(new TextePrinter());
+    String statement = customer.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
 
@@ -87,7 +87,7 @@ class CustomerTest {
     Rental rental1 = new Rental(CHILDRENS_MOVIE, 6);
     Rental rental2 = new Rental(NEW_RELEASE_MOVIE, 2);
     Rental rental3 = new Rental(REGULAR_MOVIE, 8);
-    Customer customer1
+    Customer customer
         = new CustomerBuilder()
         .withName("David")
         .withRentals(rental1, rental2, rental3)
@@ -99,7 +99,7 @@ class CustomerTest {
         \tGone with the Wind\t11.0
         Amount owed is 23.0
         You earned 4 frequent renter points""";
-    String statement = customer1.statement(new TextePrinter());
+    String statement = customer.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
 }
