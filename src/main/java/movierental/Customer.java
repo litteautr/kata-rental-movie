@@ -25,21 +25,21 @@ public class Customer {
   public String statement(IPrinter printer) {
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    String result = printer.printHeader(getName());
+    StringBuilder result = new StringBuilder(printer.printHeader(getName()));
 
-    for (Rental each : rentals) {
-      double thisAmount = amount(each);
+    for (Rental rental : rentals) {
+      double thisAmount = amount(rental);
 
-      frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, each);
+      frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, rental);
 
-      result += printer.printRental(each, thisAmount);
+      result.append(printer.printRental(rental, thisAmount));
 
       totalAmount += thisAmount;
     }
 
-    result = printer.printFooter(totalAmount, frequentRenterPoints, result);
+    result.append(printer.printFooter(totalAmount, frequentRenterPoints));
 
-    return result;
+    return result.toString();
   }
 
   private static int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
@@ -80,6 +80,5 @@ public class Customer {
         return 0;
       }
     }
-
   }
 }

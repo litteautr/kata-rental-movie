@@ -6,5 +6,5 @@ public interface IPrinter {
 
   String printRental(Rental each, double thisAmount);
 
-  String printFooter(double totalAmount, int frequentRenterPoints, String result);
+  String printFooter(double totalAmount, int frequentRenterPoints);
 }

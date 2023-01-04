@@ -1,6 +1,6 @@
 package movierental;
 
-public class TextePrinter implements IPrinter{
+public class TextePrinter implements IPrinter {
 
   @Override
   public String printHeader(String name) {
@@ -13,8 +13,7 @@ public class TextePrinter implements IPrinter{
   }
 
   @Override
-  public String printFooter(double totalAmount, int frequentRenterPoints, String result) {
-    result += "Amount owed is " + totalAmount + "\n";
-    result += "You earned " + frequentRenterPoints + " frequent renter points";
-    return result;  }
+  public String printFooter(double totalAmount, int frequentRenterPoints) {
+    return "Amount owed is " + totalAmount + "\n" + "You earned " + frequentRenterPoints + " frequent renter points";
+  }
 }

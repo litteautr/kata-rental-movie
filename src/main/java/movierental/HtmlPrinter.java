@@ -1,6 +1,6 @@
 package movierental;
 
-public class HtmlPrinter implements IPrinter{
+public class HtmlPrinter implements IPrinter {
 
   @Override
   public String printHeader(String name) {
@@ -13,7 +13,7 @@ public class HtmlPrinter implements IPrinter{
   }
 
   @Override
-  public String printFooter(double totalAmount, int frequentRenterPoints, String result) {
+  public String printFooter(double totalAmount, int frequentRenterPoints) {
     return null;
   }
 }
