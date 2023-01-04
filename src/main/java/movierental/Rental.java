@@ -2,15 +2,7 @@ package movierental;
 
 import static movierental.Movie.*;
 
-public class Rental {
-
-  private final Movie movie;
-  private final int daysRented;
-
-  public Rental(Movie movie, int daysRented) {
-    this.movie = movie;
-    this.daysRented = daysRented;
-  }
+public record Rental(Movie movie, int daysRented) {
 
   double amount() {
     switch (movie.priceCode()) {
@@ -37,13 +29,5 @@ public class Rental {
         return 0;
       }
     }
-  }
-
-  public int getDaysRented() {
-    return daysRented;
-  }
-
-  public Movie getMovie() {
-    return movie;
   }
 }

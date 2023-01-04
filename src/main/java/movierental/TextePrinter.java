@@ -9,7 +9,7 @@ public class TextePrinter implements IPrinter {
 
   @Override
   public String printRental(Rental each, double thisAmount) {
-    return "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
+    return "\t" + each.movie().title() + "\t" + thisAmount + "\n";
   }
 
   @Override
