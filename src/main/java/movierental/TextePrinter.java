@@ -8,8 +8,8 @@ public class TextePrinter implements IPrinter {
   }
 
   @Override
-  public String printRental(Rental each, double thisAmount) {
-    return "\t" + each.movie().title() + "\t" + thisAmount + "\n";
+  public String printRental(Rental rental, double thisAmount) {
+    return "\t" + rental.movie().title() + "\t" + thisAmount + "\n";
   }
 
   @Override

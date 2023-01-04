@@ -115,4 +115,24 @@ class CustomerTest {
         You earned 4 frequent renter points""";
     assertThat(statement).isEqualTo(expected);
   }
+
+  @Test
+  void statement_withHtmlPrinter_regularMovie() {
+    //Given
+    Rental rental = new Rental(REGULAR_MOVIE, 3);
+    Customer customer = customerBuilder.withRentals(rental).build();
+
+    // When
+    String statement = customer.statement(new HtmlPrinter());
+
+    // Then
+    String expected = """
+        <h1>Rental Record for <em>Sallie</em></h1>
+        <table>
+        \t<tr><td>Gone with the Wind</td><td>3.5</td></tr>
+        </table>
+        <p>Amount owed is <em>3.5</em></p>
+        <p>You earned <em>1</em> frequent renter points</p>""";
+    assertThat(statement).isEqualTo(expected);
+  }
 }
