@@ -41,7 +41,7 @@ class CustomerTest {
   }
 
   @Test
-  void statement_regularMovie() {
+  void statement_withTextePrinter_regularMovie() {
     //Given
     Rental rental = new Rental(REGULAR_MOVIE, 3);
     Customer customer = customerBuilder.withRentals(rental).build();
@@ -59,7 +59,7 @@ class CustomerTest {
   }
 
   @Test
-  void statement_newReleaseMovie() {
+  void statement_withTextePrinter_newReleaseMovie() {
     //Given
     Rental rental = new Rental(NEW_RELEASE_MOVIE, 3);
     Customer customer = customerBuilder.withRentals(rental).build();
@@ -77,7 +77,7 @@ class CustomerTest {
   }
 
   @Test
-  void statement_childrensMovie() {
+  void statement_withTextePrinter_childrensMovie() {
     //Given
     Rental rental = new Rental(CHILDRENS_MOVIE, 3);
     Customer customer = customerBuilder.withRentals(rental).build();
@@ -95,7 +95,7 @@ class CustomerTest {
   }
 
   @Test
-  void statement_manyMovies() {
+  void statement_withTextePrinter_manyMovies() {
     //Given
     Rental rentalChidren = new Rental(CHILDRENS_MOVIE, 6);
     Rental rentalNewRelease = new Rental(NEW_RELEASE_MOVIE, 2);
