@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 
 class CustomerTest {
 
+  public static final Movie REGULAR_MOVIE = new Movie("Gone with the Wind", REGULAR);
+  public static final Movie NEW_RELEASE_MOVIE = new Movie("Star Wars", NEW_RELEASE);
+  public static final Movie CHILDRENS_MOVIE = new Movie("Madagascar", CHILDRENS);
+
   @Test
   void testCustomer() {
     Customer c = new CustomerBuilder().build();
@@ -17,8 +21,7 @@ class CustomerTest {
   @Test
   void addRental() {
     Customer customer2 = new CustomerBuilder().withName("Julia").build();
-    Movie movie1 = new Movie("Gone with the Wind", REGULAR);
-    Rental rental1 = new Rental(movie1, 3);
+    Rental rental1 = new Rental(REGULAR_MOVIE, 3);
     customer2.addRental(rental1);
   }
 
@@ -30,8 +33,7 @@ class CustomerTest {
 
   @Test
   void statement_regularMovie() {
-    Movie movie1 = new Movie("Gone with the Wind", REGULAR);
-    Rental rental1 = new Rental(movie1, 3);
+    Rental rental1 = new Rental(REGULAR_MOVIE, 3);
     Customer customer2 =
         new CustomerBuilder()
             .withName("Sallie")
@@ -48,8 +50,7 @@ class CustomerTest {
 
   @Test
   void statement_newReleaseMovie() {
-    Movie movie1 = new Movie("Star Wars", NEW_RELEASE);
-    Rental rental1 = new Rental(movie1, 3);
+    Rental rental1 = new Rental(NEW_RELEASE_MOVIE, 3);
     Customer customer2 =
         new CustomerBuilder()
             .withName("Sallie")
@@ -66,8 +67,7 @@ class CustomerTest {
 
   @Test
   void statement_childrensMovie() {
-    Movie movie1 = new Movie("Madagascar", CHILDRENS);
-    Rental rental1 = new Rental(movie1, 3);
+    Rental rental1 = new Rental(CHILDRENS_MOVIE, 3);
     Customer customer2
         = new CustomerBuilder()
         .withName("Sallie")
@@ -84,12 +84,9 @@ class CustomerTest {
 
   @Test
   void statement_manyMovies() {
-    Movie movie1 = new Movie("Madagascar", CHILDRENS);
-    Rental rental1 = new Rental(movie1, 6);
-    Movie movie2 = new Movie("Star Wars", NEW_RELEASE);
-    Rental rental2 = new Rental(movie2, 2);
-    Movie movie3 = new Movie("Gone with the Wind", REGULAR);
-    Rental rental3 = new Rental(movie3, 8);
+    Rental rental1 = new Rental(CHILDRENS_MOVIE, 6);
+    Rental rental2 = new Rental(NEW_RELEASE_MOVIE, 2);
+    Rental rental3 = new Rental(REGULAR_MOVIE, 8);
     Customer customer1
         = new CustomerBuilder()
         .withName("David")
