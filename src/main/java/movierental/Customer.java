@@ -1,6 +1,6 @@
 package movierental;
 
-import static movierental.Movie.*;
+import static movierental.Movie.NEW_RELEASE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Customer {
     StringBuilder result = new StringBuilder(printer.printHeader(getName()));
 
     for (Rental rental : rentals) {
-      double thisAmount = amount(rental);
+      double thisAmount = rental.amount();
 
       frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, rental);
 
@@ -42,43 +42,15 @@ public class Customer {
     return result.toString();
   }
 
-  private static int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
+  private static int getFrequentRenterPoints(int frequentRenterPoints, Rental rental) {
     // add frequent renter points
     frequentRenterPoints++;
 
     // add bonus for a two day new release rental
-    if ((each.getMovie().getPriceCode() == NEW_RELEASE) && each.getDaysRented() > 1) {
+    if ((rental.getMovie().getPriceCode() == NEW_RELEASE) && rental.getDaysRented() > 1) {
       frequentRenterPoints++;
     }
 
     return frequentRenterPoints;
-  }
-
-  private static double amount(Rental rental) {
-
-    switch (rental.getMovie().getPriceCode()) {
-      case REGULAR -> {
-        double thisAmount = 2;
-        if (rental.getDaysRented() > 2) {
-          thisAmount += (rental.getDaysRented() - 2) * 1.5;
-        }
-
-        return thisAmount;
-      }
-      case NEW_RELEASE -> {
-        return rental.getDaysRented() * 3;
-      }
-      case CHILDRENS -> {
-        double thisAmount = 1.5;
-        if (rental.getDaysRented() > 3) {
-          thisAmount += (rental.getDaysRented() - 3) * 1.5;
-        }
-
-        return thisAmount;
-      }
-      default -> {
-        return 0;
-      }
-    }
   }
 }
