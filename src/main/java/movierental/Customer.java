@@ -4,19 +4,19 @@ import java.util.List;
 
 public class Customer {
 
-    private String _name;
-    private List<Rental> _rentals = new ArrayList<>();
+    private final String name;
+    private final List<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
-        _name = name;
+        this.name = name;
     }
 
     public void addRental(Rental arg) {
-        _rentals.add(arg);
+        rentals.add(arg);
     }
 
     public String getName() {
-        return _name;
+        return name;
     }
 
     public String statement(IPrinter printer) {
@@ -24,13 +24,13 @@ public class Customer {
         int frequentRenterPoints = 0;
         String result = printer.printHeader(getName());
 
-        for (Rental each: _rentals) {
+        for (Rental each: rentals) {
             double thisAmount = amount(each);
 
             frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, each);
 
-            // show figures for this rental
             result += printer.printRental(each, thisAmount);
+
             totalAmount += thisAmount;
         }
 
