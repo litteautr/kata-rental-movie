@@ -5,16 +5,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class CustomerTest {
+class CustomerTest {
 
   @Test
-  public void testCustomer() {
+  void testCustomer() {
     Customer c = new CustomerBuilder().build();
     assertNotNull(c);
   }
 
   @Test
-  public void testAddRental() {
+  void testAddRental() {
     Customer customer2 = new CustomerBuilder().withName("Julia").build();
     Movie movie1 = new Movie("Gone with the Wind", Movie.REGULAR);
     Rental rental1 = new Rental(movie1, 3); // 3 day rental
@@ -22,13 +22,13 @@ public class CustomerTest {
   }
 
   @Test
-  public void testGetName() {
+  void testGetName() {
     Customer c = new Customer("David");
     assertEquals("David", c.getName());
   }
 
   @Test
-  public void statementForRegularMovie() {
+  void statementForRegularMovie() {
     Movie movie1 = new Movie("Gone with the Wind", Movie.REGULAR);
     Rental rental1 = new Rental(movie1, 3); // 3 day rental
     Customer customer2 =
@@ -45,7 +45,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void statementForNewReleaseMovie() {
+  void statementForNewReleaseMovie() {
     Movie movie1 = new Movie("Star Wars", Movie.NEW_RELEASE);
     Rental rental1 = new Rental(movie1, 3); // 3 day rental
     Customer customer2 =
@@ -62,7 +62,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void statementForChildrensMovie() {
+  void statementForChildrensMovie() {
     Movie movie1 = new Movie("Madagascar", Movie.CHILDRENS);
     Rental rental1 = new Rental(movie1, 3); // 3 day rental
     Customer customer2
@@ -79,7 +79,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void statementForManyMovies() {
+  void statementForManyMovies() {
     Movie movie1 = new Movie("Madagascar", Movie.CHILDRENS);
     Rental rental1 = new Rental(movie1, 6); // 6 day rental
     Movie movie2 = new Movie("Star Wars", Movie.NEW_RELEASE);
