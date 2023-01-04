@@ -14,7 +14,7 @@ class CustomerTest {
   }
 
   @Test
-  void testAddRental() {
+  void addRental() {
     Customer customer2 = new CustomerBuilder().withName("Julia").build();
     Movie movie1 = new Movie("Gone with the Wind", Movie.REGULAR);
     Rental rental1 = new Rental(movie1, 3); // 3 day rental
@@ -22,13 +22,13 @@ class CustomerTest {
   }
 
   @Test
-  void testGetName() {
+  void getName() {
     Customer c = new Customer("David");
     assertEquals("David", c.getName());
   }
 
   @Test
-  void statementForRegularMovie() {
+  void statement_regularMovie() {
     Movie movie1 = new Movie("Gone with the Wind", Movie.REGULAR);
     Rental rental1 = new Rental(movie1, 3); // 3 day rental
     Customer customer2 =
@@ -45,7 +45,7 @@ class CustomerTest {
   }
 
   @Test
-  void statementForNewReleaseMovie() {
+  void statement_newReleaseMovie() {
     Movie movie1 = new Movie("Star Wars", Movie.NEW_RELEASE);
     Rental rental1 = new Rental(movie1, 3); // 3 day rental
     Customer customer2 =
@@ -62,7 +62,7 @@ class CustomerTest {
   }
 
   @Test
-  void statementForChildrensMovie() {
+  void statement_childrensMovie() {
     Movie movie1 = new Movie("Madagascar", Movie.CHILDRENS);
     Rental rental1 = new Rental(movie1, 3); // 3 day rental
     Customer customer2
@@ -79,7 +79,7 @@ class CustomerTest {
   }
 
   @Test
-  void statementForManyMovies() {
+  void statement_manyMovies() {
     Movie movie1 = new Movie("Madagascar", Movie.CHILDRENS);
     Rental rental1 = new Rental(movie1, 6); // 6 day rental
     Movie movie2 = new Movie("Star Wars", Movie.NEW_RELEASE);
@@ -100,6 +100,4 @@ class CustomerTest {
     String statement = customer1.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
-
-  //TODO make test for price breaks in code.
 }
