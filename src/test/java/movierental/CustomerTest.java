@@ -1,6 +1,6 @@
 package movierental;
 
-import static movierental.Movie.*;
+import static movierental.Category.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -11,7 +11,7 @@ class CustomerTest {
 
   private static final Movie REGULAR_MOVIE = new Movie("Gone with the Wind", REGULAR);
   private static final Movie NEW_RELEASE_MOVIE = new Movie("Star Wars", NEW_RELEASE);
-  private static final Movie CHILDRENS_MOVIE = new Movie("Madagascar", CHILDRENS);
+  private static final Movie CHILDRENS_MOVIE = new Movie("Madagascar", CHILDREN);
   private static final String CUSTOMER_NAME = "Sallie";
 
   private static CustomerBuilder customerBuilder;
@@ -23,8 +23,8 @@ class CustomerTest {
 
   @Test
   void testCustomer() {
-    Customer c = new CustomerBuilder().build();
-    assertNotNull(c);
+    Customer customer = new CustomerBuilder().build();
+    assertNotNull(customer);
   }
 
   @Test

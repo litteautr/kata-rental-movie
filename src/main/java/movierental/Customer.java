@@ -1,6 +1,6 @@
 package movierental;
 
-import static movierental.Movie.NEW_RELEASE;
+import static movierental.Category.NEW_RELEASE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class Customer {
   public String statement(IPrinter printer) {
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    StringBuilder result = new StringBuilder(printer.printHeader(getName()));
+    StringBuilder result = new StringBuilder(printer.printHeader(name));
 
     for (Rental rental : rentals) {
       double thisAmount = rental.amount();
@@ -47,7 +47,7 @@ public class Customer {
     frequentRenterPoints++;
 
     // add bonus for a two day new release rental
-    if ((rental.movie().priceCode() == NEW_RELEASE) && rental.daysRented() > 1) {
+    if ((rental.movie().category() == NEW_RELEASE) && rental.daysRented() > 1) {
       frequentRenterPoints++;
     }
 
