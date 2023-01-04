@@ -37,13 +37,12 @@ public class Customer {
       totalAmount += thisAmount;
     }
 
-    result.append(printer.printFooter(totalAmount, frequentRenterPoints));
-
-    return result.toString();
+    return result
+        .append(printer.printFooter(totalAmount, frequentRenterPoints))
+        .toString();
   }
 
   private static int getFrequentRenterPoints(int frequentRenterPoints, Rental rental) {
-    // add frequent renter points
     frequentRenterPoints++;
 
     // add bonus for a two day new release rental
