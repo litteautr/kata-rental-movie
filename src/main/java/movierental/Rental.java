@@ -5,27 +5,25 @@ public record Rental(Movie movie, int daysRented) {
   double amount() {
     switch (movie.category()) {
       case REGULAR -> {
-        double thisAmount = 2;
-        if (daysRented > 2) {
-          thisAmount += (daysRented - 2) * 1.5;
-        }
-
-        return thisAmount;
+        return calcul(2, 2, 1.5);
       }
       case NEW_RELEASE -> {
-        return (double) daysRented * 3;
+        return calcul(0, 0, 3);
       }
       case CHILDREN -> {
-        double thisAmount = 1.5;
-        if (daysRented > 3) {
-          thisAmount += (daysRented - 3) * 1.5;
-        }
-
-        return thisAmount;
+        return calcul(1.5, 3, 1.5);
       }
       default -> {
         return 0;
       }
     }
+  }
+
+  private double calcul(double initialAmount, double daysBeforePenalty, double penaltyCoefficient) {
+    if (daysRented > daysBeforePenalty) {
+      return initialAmount + (daysRented - daysBeforePenalty) * penaltyCoefficient;
+    }
+
+    return initialAmount;
   }
 }
