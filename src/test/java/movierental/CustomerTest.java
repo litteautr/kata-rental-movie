@@ -1,9 +1,9 @@
 package movierental;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import org.junit.jupiter.api.Test;
 
 public class CustomerTest {
 
@@ -40,7 +40,7 @@ public class CustomerTest {
         "\tGone with the Wind\t3.5\n" +
         "Amount owed is 3.5\n" +
         "You earned 1 frequent renter points";
-    String statement = customer2.statement();
+    String statement = customer2.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
 
@@ -57,7 +57,7 @@ public class CustomerTest {
         "\tStar Wars\t9.0\n" +
         "Amount owed is 9.0\n" +
         "You earned 2 frequent renter points";
-    String statement = customer2.statement();
+    String statement = customer2.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
 
@@ -74,7 +74,7 @@ public class CustomerTest {
         "\tMadagascar\t1.5\n" +
         "Amount owed is 1.5\n" +
         "You earned 1 frequent renter points";
-    String statement = customer2.statement();
+    String statement = customer2.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
 
@@ -97,7 +97,7 @@ public class CustomerTest {
         "\tGone with the Wind\t11.0\n" +
         "Amount owed is 23.0\n" +
         "You earned 4 frequent renter points";
-    String statement = customer1.statement();
+    String statement = customer1.statement(new TextePrinter());
     assertEquals(expected, statement);
   }
 
