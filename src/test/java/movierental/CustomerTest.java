@@ -1,7 +1,7 @@
 package movierental;
 
 import static movierental.Movie.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -36,8 +36,8 @@ class CustomerTest {
 
   @Test
   void getName() {
-    Customer c = new Customer(CUSTOMER_NAME);
-    assertEquals(CUSTOMER_NAME, c.getName());
+    Customer customer = new Customer(CUSTOMER_NAME);
+    assertThat(customer.getName()).isEqualTo(CUSTOMER_NAME);
   }
 
   @Test
@@ -55,7 +55,7 @@ class CustomerTest {
         \tGone with the Wind\t3.5
         Amount owed is 3.5
         You earned 1 frequent renter points""";
-    assertEquals(expected, statement);
+    assertThat(statement).isEqualTo(expected);
   }
 
   @Test
@@ -73,7 +73,7 @@ class CustomerTest {
         \tStar Wars\t9.0
         Amount owed is 9.0
         You earned 2 frequent renter points""";
-    assertEquals(expected, statement);
+    assertThat(statement).isEqualTo(expected);
   }
 
   @Test
@@ -91,7 +91,7 @@ class CustomerTest {
         \tMadagascar\t1.5
         Amount owed is 1.5
         You earned 1 frequent renter points""";
-    assertEquals(expected, statement);
+    assertThat(statement).isEqualTo(expected);
   }
 
   @Test
@@ -113,6 +113,6 @@ class CustomerTest {
         \tGone with the Wind\t11.0
         Amount owed is 23.0
         You earned 4 frequent renter points""";
-    assertEquals(expected, statement);
+    assertThat(statement).isEqualTo(expected);
   }
 }
